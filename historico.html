@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico — UMC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="topo">
+        <div class="topo-marca">
+            <img src="../umcenter_logo.jpg" alt="UMC" class="logo-header">
+            <div class="topo-titulo">
+                <h1>Histórico de Movimentações</h1>
+                <span class="topo-subtitulo">Uberlândia Medical Center</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"     class="btn-voltar">Painel</a>
+            <a href="operacoes.html" class="btn-novo">Operações</a>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <!-- FILTROS -->
+    <section class="formulario">
+        <h2>Filtros</h2>
+        <div class="filtros">
+            <label>
+                Data inicial
+                <input type="date" id="filtroDataInicio">
+            </label>
+            <label>
+                Data final
+                <input type="date" id="filtroDataFim">
+            </label>
+            <label>
+                Ação
+                <select id="filtroAcao">
+                    <option value="">Todas as ações</option>
+                    <option value="Internação">Internação</option>
+                    <option value="Alta">Alta</option>
+                    <option value="Transferência Saída">Transferência Saída</option>
+                    <option value="Transferência Entrada">Transferência Entrada</option>
+                    <option value="Reserva">Reserva</option>
+                    <option value="Reserva Cancelada">Reserva Cancelada</option>
+                    <option value="Reserva Convertida">Reserva Convertida</option>
+                    <option value="Bloqueio">Bloqueio</option>
+                    <option value="Desbloqueio">Desbloqueio</option>
+                    <option value="Higienização Iniciada">Higienização Iniciada</option>
+                    <option value="Higienização Concluída">Higienização Concluída</option>
+                </select>
+            </label>
+            <label style="justify-content:flex-end">
+                &nbsp;
+                <button id="btnFiltrar" class="btn-secundario" style="width:100%">Filtrar</button>
+            </label>
+            <label style="justify-content:flex-end">
+                &nbsp;
+                <button id="btnLimpar" class="btn-operacao" style="width:100%">Limpar</button>
+            </label>
+        </div>
+        <div id="feedbackHistorico" class="feedback"></div>
+    </section>
+
+    <!-- TABELA DO HISTÓRICO -->
+    <section class="tabela-section">
+        <div class="tabela-header">
+            <h3>Registro de Movimentações</h3>
+            <span id="contadorHistorico" style="font-size:12px; color:#6b7280;"></span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data / Hora</th>
+                    <th>Leito</th>
+                    <th>Setor</th>
+                    <th>Paciente</th>
+                    <th>Ação</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-historico"></tbody>
+        </table>
+    </section>
+
+</main>
+
+<script src="historico.js"></script>
+</body>
+</html>

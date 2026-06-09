@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operações — UMC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="topo">
+        <div class="topo-marca">
+            <img src="../umcenter_logo.jpg" alt="UMC" class="logo-header">
+            <div class="topo-titulo">
+                <h1>Operações Hospitalares</h1>
+                <span class="topo-subtitulo">Uberlândia Medical Center</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html"    class="btn-voltar">Painel</a>
+            <a href="historico.html" class="btn-historico">Histórico</a>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <!-- ABAS DE NAVEGAÇÃO -->
+    <div class="abas">
+        <button class="aba ativa" data-tab="internacao">Internação</button>
+        <button class="aba"       data-tab="alta">Alta</button>
+        <button class="aba"       data-tab="higienizacao">Higienização</button>
+        <button class="aba"       data-tab="transferencia">Transferência</button>
+        <button class="aba"       data-tab="reserva">Reserva</button>
+        <button class="aba"       data-tab="bloqueio">Bloqueio</button>
+    </div>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- TAB: INTERNAÇÃO                           -->
+    <!-- ══════════════════════════════════════════ -->
+    <div id="tab-internacao" class="painel-aba ativo">
+        <section class="formulario">
+            <h2>Nova Internação</h2>
+            <div class="grupo-campos">
+                <input type="text"  id="nome"           placeholder="Nome completo do paciente" autocomplete="off">
+                <input type="text"  id="prontuario"     placeholder="Número do prontuário"      autocomplete="off">
+                <input type="date"  id="dataNascimento" title="Data de nascimento">
+                <input type="text"  id="convenio"       placeholder="Convênio"                  autocomplete="off">
+                <input type="text"  id="medico"         placeholder="Médico responsável"        autocomplete="off">
+                <select id="leitoInternacao">
+                    <option value="">Selecione o leito</option>
+                </select>
+                <input type="text"  id="diagnostico"    placeholder="Diagnóstico (opcional)"    autocomplete="off">
+            </div>
+            <button id="btnInternar">Internar Paciente</button>
+            <div id="feedbackInternar" class="feedback"></div>
+        </section>
+    </div>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- TAB: ALTA                                 -->
+    <!-- ══════════════════════════════════════════ -->
+    <div id="tab-alta" class="painel-aba">
+        <section class="formulario">
+            <h2>Alta Hospitalar</h2>
+            <div class="grupo-campos">
+                <select id="leitoAlta">
+                    <option value="">Selecione o leito do paciente</option>
+                </select>
+            </div>
+            <button id="btnAlta" class="btn-operacao">Confirmar Alta</button>
+            <div id="feedbackAlta" class="feedback"></div>
+        </section>
+    </div>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- TAB: HIGIENIZAÇÃO                         -->
+    <!-- ══════════════════════════════════════════ -->
+    <div id="tab-higienizacao" class="painel-aba">
+        <section class="formulario">
+            <h2>Gestão de Higienização</h2>
+
+            <h3>Iniciar Higienização</h3>
+            <div class="grupo-campos">
+                <select id="leitoHigienizacao">
+                    <option value="">Selecione o leito</option>
+                </select>
+                <input type="text" id="responsavelHig" placeholder="Nome do responsável pela limpeza" autocomplete="off">
+            </div>
+            <button id="btnIniciarHig" class="btn-secundario">Iniciar Higienização</button>
+            <div id="feedbackIniciarHig" class="feedback"></div>
+
+            <h3>Concluir Higienização</h3>
+            <div id="listaHigienizacoes" class="lista-registros">
+                <p class="registro-vazio">Carregando higienizações ativas...</p>
+            </div>
+            <div id="feedbackConcluirHig" class="feedback"></div>
+        </section>
+    </div>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- TAB: TRANSFERÊNCIA                        -->
+    <!-- ══════════════════════════════════════════ -->
+    <div id="tab-transferencia" class="painel-aba">
+        <section class="formulario">
+            <h2>Transferência de Paciente</h2>
+            <div class="grupo-campos">
+                <select id="leitoOrigem">
+                    <option value="">Leito de origem (ocupado)</option>
+                </select>
+                <select id="leitoDestino">
+                    <option value="">Leito de destino (disponível)</option>
+                </select>
+            </div>
+            <button id="btnTransferir" class="btn-secundario">Transferir Paciente</button>
+            <div id="feedbackTransferencia" class="feedback"></div>
+        </section>
+    </div>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- TAB: RESERVA                              -->
+    <!-- ══════════════════════════════════════════ -->
+    <div id="tab-reserva" class="painel-aba">
+        <section class="formulario">
+            <h2>Reserva de Leito</h2>
+
+            <h3>Nova Reserva</h3>
+            <div class="grupo-campos">
+                <select id="leitoReserva">
+                    <option value="">Selecione o leito</option>
+                </select>
+                <input type="text"     id="nomeReserva"     placeholder="Nome do paciente"      autocomplete="off">
+                <input type="text"     id="convenioReserva" placeholder="Convênio (opcional)"   autocomplete="off">
+                <input type="text"     id="medicoReserva"   placeholder="Médico (opcional)"     autocomplete="off">
+                <input type="datetime-local" id="previsaoEntrada" title="Previsão de entrada">
+            </div>
+            <button id="btnReservar" class="btn-aviso">Reservar Leito</button>
+            <div id="feedbackReserva" class="feedback"></div>
+
+            <h3>Reservas Ativas</h3>
+            <div id="listaReservas" class="lista-registros">
+                <p class="registro-vazio">Carregando reservas...</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- TAB: BLOQUEIO                             -->
+    <!-- ══════════════════════════════════════════ -->
+    <div id="tab-bloqueio" class="painel-aba">
+        <section class="formulario">
+            <h2>Bloqueio de Leito</h2>
+
+            <h3>Bloquear Leito</h3>
+            <div class="grupo-campos">
+                <select id="leitoBloqueio">
+                    <option value="">Selecione o leito</option>
+                </select>
+                <select id="motivoBloqueio">
+                    <option value="">Selecione o motivo</option>
+                    <option value="Manutenção">Manutenção</option>
+                    <option value="Isolamento">Isolamento</option>
+                    <option value="Reforma">Reforma</option>
+                    <option value="Equipamento">Equipamento</option>
+                </select>
+                <input type="text" id="responsavelBloqueio" placeholder="Responsável" autocomplete="off">
+                <input type="text" id="descricaoBloqueio"   placeholder="Descrição (opcional)" autocomplete="off">
+            </div>
+            <button id="btnBloquear" class="btn-operacao">Bloquear Leito</button>
+            <div id="feedbackBloqueio" class="feedback"></div>
+
+            <h3>Leitos Bloqueados</h3>
+            <div id="listaBloqueios" class="lista-registros">
+                <p class="registro-vazio">Carregando bloqueios...</p>
+            </div>
+            <div id="feedbackDesbloquear" class="feedback"></div>
+        </section>
+    </div>
+
+</main>
+
+<script src="operacoes.js"></script>
+</body>
+</html>

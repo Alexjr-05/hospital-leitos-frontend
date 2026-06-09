@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Hospitalar UMC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="topo">
+        <div class="topo-marca">
+            <img src="../umcenter_logo.jpg" alt="UMC" class="logo-header">
+            <div class="topo-titulo">
+                <h1>Central de Gestão de Leitos</h1>
+                <span class="topo-subtitulo">Uberlândia Medical Center</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="operacoes.html" class="btn-novo">+ Operações</a>
+            <a href="historico.html" class="btn-historico">Histórico</a>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <!-- ALERTAS -->
+    <section class="alertas-section" id="alertas-section" style="display:none"></section>
+
+    <!-- CARDS KPI -->
+    <section class="cards">
+        <div class="card card-total">
+            <h2>Total de Leitos</h2>
+            <p id="kpi-total">—</p>
+        </div>
+        <div class="card card-ocupado">
+            <h2>Ocupados</h2>
+            <p id="kpi-ocupados">—</p>
+        </div>
+        <div class="card card-disponivel">
+            <h2>Disponíveis</h2>
+            <p id="kpi-disponiveis">—</p>
+        </div>
+        <div class="card card-higienizacao">
+            <h2>Higienização</h2>
+            <p id="kpi-higienizacao">—</p>
+        </div>
+        <div class="card card-reservado">
+            <h2>Reservados</h2>
+            <p id="kpi-reservados">—</p>
+        </div>
+        <div class="card card-bloqueado">
+            <h2>Bloqueados</h2>
+            <p id="kpi-bloqueados">—</p>
+        </div>
+    </section>
+
+    <!-- TABELA DE LEITOS -->
+    <section class="tabela-section">
+        <div class="tabela-header">
+            <h3>Mapa de Leitos</h3>
+            <span id="ultima-atualizacao" style="font-size:12px; color:#6b7280;"></span>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Leito</th>
+                    <th>Setor</th>
+                    <th>Status</th>
+                    <th>Paciente</th>
+                    <th>Convênio</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-leitos"></tbody>
+        </table>
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
